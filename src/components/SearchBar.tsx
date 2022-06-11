@@ -1,12 +1,16 @@
 import React, { ChangeEvent, Component } from 'react';
 
-class SearchBar extends Component {
+type SearchBarStateType = {
+  search: string;
+};
+
+class SearchBar extends Component<Record<string, never>, SearchBarStateType> {
   state = {
     search: '',
   };
 
   componentDidMount() {
-    const dataLocalStorage = localStorage.getItem('search');
+    const dataLocalStorage: string | null = localStorage.getItem('search');
     if (dataLocalStorage) {
       this.setState({ search: dataLocalStorage });
     }
@@ -16,7 +20,7 @@ class SearchBar extends Component {
     localStorage.setItem('search', this.state.search);
   }
 
-  handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     this.setState({ search: e.target.value });
     localStorage.setItem('search', this.state.search);
   };

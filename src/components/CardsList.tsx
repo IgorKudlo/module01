@@ -9,20 +9,25 @@ export type CardType = {
   thumbnailUrl: string;
 };
 
-class CardsList extends Component {
+type CardsListPropsType = Record<string, never>;
+
+type CardsListStateType = {
+  cards: CardType[];
+};
+
+class CardsList extends Component<CardsListPropsType, CardsListStateType> {
   state = {
     cards: [],
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     fetch('https://jsonplaceholder.typicode.com/albums/1/photos')
-      .then((res) => res.json())
+      .then((res) => res.json() as Promise<CardType[]>)
       .then((json) => this.setState({ cards: json }))
       .catch((err) => console.log(err));
   }
 
   render() {
-    console.log(this.state.cards);
     return (
       <div className="cards-list">
         {this.state.cards.length > 0
