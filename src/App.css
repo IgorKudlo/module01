@@ -24,6 +24,7 @@
 
 .search-bar {
   display: inline-flex;
+  margin-bottom: 60px;
   padding: 40px;
   border-radius: 20px;
   background-color: #4c5b65;
@@ -48,4 +49,26 @@
   color: #e6e7e6;
   font-weight: 700;
   cursor: pointer;
+}
+
+.cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+  grid-gap: 40px 20px;
+}
+
+.card-thumb {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.card-album {
+  font-weight: 700;
+  color: gray;
 }
